@@ -1,5 +1,5 @@
 const Benchmark = require("benchmark");
-const { bubbleSort } = require("./sort");
+const { bubbleSort, quickSort } = require("./sort");
 
 const numbers = [];
 for (let i = 0; i < 10000; i++) {
@@ -11,7 +11,13 @@ const suite = new Benchmark.Suite();
 suite
   .add("bubble sort", function () {
     const testArray = [...numbers];
+
     bubbleSort(testArray);
+  })
+  .add("quick sort", function () {
+    const testArray = [...numbers];
+
+    quickSort(testArray);
   })
   .on("complete", function () {
     this.forEach((result) =>
